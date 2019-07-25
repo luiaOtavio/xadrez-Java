@@ -1,5 +1,7 @@
 package xadrez.java;
 
+import BordGame.Position;
+
 /**
  *jogo de xadres do curso de java
  * @author luizc
@@ -7,7 +9,8 @@ package xadrez.java;
 public class XadrezJava {
 
     public static void main(String[] args) {
-        System.out.println("hello world");
+        Position pos = new Position(3, 3);
+        System.out.println(pos);
     }
     
 }
