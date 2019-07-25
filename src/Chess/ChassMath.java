@@ -1,6 +1,9 @@
 package Chess;
 
 import BordGame.Board;
+import BordGame.Position;
+import ChessPiecePa.Hook;
+import Pieces.King;
 
 /**
  *
@@ -11,6 +14,7 @@ public class ChassMath {
     
     public ChassMath(){
         board = new Board(8, 8);
+        initialSetup();
     }
     public ChessPiece[][]getPieces(){
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
@@ -21,5 +25,10 @@ public class ChassMath {
         }//for i
         return mat;
     }//Chesspiece
-    
+    private void initialSetup(){
+        board.placePiece(new Hook(board,Color.WHITE), new Position(2, 1));
+        board.placePiece(new King(board,Color.BLACK), new Position(0, 4));
+        board.placePiece(new King(board,Color.WHITE), new Position(7, 4));
+
+    }
 }
