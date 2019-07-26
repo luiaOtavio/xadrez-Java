@@ -19,7 +19,7 @@ public class XadrezJava {
         
         while(true){
             try{
-                //UI.ClearScreen();
+                UI.ClearScreen();
                 UI.printBoard(chessmath.getPieces());
                 System.out.println("");
                 System.out.print("Source:");
@@ -30,8 +30,6 @@ public class XadrezJava {
                 ChessPosition target = UI.readChesPosition(sc);
 
                 ChessPiece capturedPiece = chessmath.performChessMove(source, target);
-                UI.ClearScreen();
-
             }
             catch(ChessException e){
                 System.out.println(e.getMessage());

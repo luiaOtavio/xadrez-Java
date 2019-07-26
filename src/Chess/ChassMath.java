@@ -44,6 +44,9 @@ public class ChassMath {
         if(!board.thereIsAPiece(position)){
             throw new BoardGameException("Posição não encontrada");
         }
+        if(!board.piece(position).isThereAnyPossibleMovie()){
+            throw new ChessException("Nõa existe movimento para peça escolhida");
+        }
     }
     private void placeNewPiece(char colomn, int row, ChessPiece piece){
         board.placePiece(piece, new ChessPosition(colomn, row).toPosition());
