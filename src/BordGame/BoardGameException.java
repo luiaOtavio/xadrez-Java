@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BordGame;
+
 
 /**
  *
  * @author luizc
  */
-public class BoardGameException {
+public class BoardGameException extends RuntimeException{
+    private static final long serialVersionUID = 1L;
+    
+    public BoardGameException(String msg){
+        super(msg);
+    }
+    
     
 }
