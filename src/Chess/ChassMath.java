@@ -1,6 +1,9 @@
 package Chess;
 
 import BordGame.Board;
+import BordGame.BoardGameException;
+import BordGame.Piece;
+import BordGame.Position;
 import ChessPiecePa.Hook;
 import Pieces.King;
 
@@ -24,7 +27,24 @@ public class ChassMath {
         }//for i
         return mat;
     }//Chesspiece
-    
+    public ChessPiece performChessMove(ChessPosition SourcePosition, ChessPosition targetPosition){
+        Position source = SourcePosition.toPosition();
+        Position target = targetPosition.toPosition();
+        validateSourcePosition(source);
+        Piece capturedPiece = makeMove(source, target);
+        return (ChessPiece)capturedPiece;
+    }
+    private Piece makeMove(Position source, Position target){
+        Piece p = board.removePiece(source);
+        Piece capturedPiece = board.removePiece(target);
+        board.placePiece(p, target);
+        return capturedPiece;
+    }
+    private void validateSourcePosition(Position position){
+        if(!board.thereIsAPiece(position)){
+            throw new BoardGameException("Posição não encontrada");
+        }
+    }
     private void placeNewPiece(char colomn, int row, ChessPiece piece){
         board.placePiece(piece, new ChessPosition(colomn, row).toPosition());
     }

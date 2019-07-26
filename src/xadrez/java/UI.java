@@ -1,7 +1,10 @@
 package xadrez.java;
 
 import Chess.ChessPiece;
+import Chess.ChessPosition;
 import Chess.Color;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -26,6 +29,18 @@ public class UI {
 	public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+        
+        public static ChessPosition readChesPosition(Scanner sc){
+            try{
+                String s = sc.nextLine();
+                char colomn = s.charAt(0);
+                int row = Integer.parseInt(s.substring(1));
+                return new ChessPosition(colomn, row);
+            }
+            catch(RuntimeException e){
+                throw new InputMismatchException("erro lendo posiçõa do xadres: valido somente de a1 a h8");
+            }
+        }
     public static void printBoard(ChessPiece[][] pieces){
         for(int i=0; i<pieces.length; i++){
             System.out.print((8-i)+" ");
