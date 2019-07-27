@@ -24,7 +24,11 @@ public class XadrezJava {
                 System.out.println("");
                 System.out.print("Source:");
                 ChessPosition source = UI.readChesPosition(sc);
-
+                
+                boolean [][] possibleMove = chessmath.possibleMove(source);
+                UI.ClearScreen();
+                UI.printBoard(chessmath.getPieces(), possibleMove);
+                
                 System.out.println("");
                 System.out.print("Target:");
                 ChessPosition target = UI.readChesPosition(sc);
