@@ -20,7 +20,7 @@ public class XadrezJava {
         while(true){
             try{
                 UI.ClearScreen();
-                UI.printBoard(chessmath.getPieces());
+                UI.printMatch(chessmath);
                 System.out.println("");
                 System.out.print("Source:");
                 ChessPosition source = UI.readChesPosition(sc);

@@ -1,5 +1,6 @@
 package xadrez.java;
 
+import Chess.ChassMath;
 import Chess.ChessPiece;
 import Chess.ChessPosition;
 import Chess.Color;
@@ -73,6 +74,13 @@ public class UI {
         }
         System.out.print("");
     }
+    public static void printMatch(ChassMath chessmatch){
+        printBoard(chessmatch.getPieces());
+        System.out.println("");
+        System.out.println("Turn: "+chessmatch.getTurn());
+        System.out.println("esperando o jogador: "+chessmatch.getCurrentePlaye());
+    }
+    
     public static void printBoard(ChessPiece[][] pieces, boolean[][]possibleMove){
         for(int i=0; i<pieces.length; i++){
             System.out.print((8-i)+" ");
