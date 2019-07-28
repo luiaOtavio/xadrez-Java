@@ -4,7 +4,9 @@ import Chess.ChassMath;
 import Chess.ChessException;
 import Chess.ChessPiece;
 import Chess.ChessPosition;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 /**
  *jogo de xadres do curso de java
@@ -16,11 +18,12 @@ public class XadrezJava {
         
         Scanner sc = new Scanner(System.in);
         ChassMath chessmath = new ChassMath();
+        List<ChessPiece> captured = new ArrayList<>();
         
         while(true){
             try{
                 UI.ClearScreen();
-                UI.printMatch(chessmath);
+                UI.printMatch(chessmath, captured);
                 System.out.println("");
                 System.out.print("Source:");
                 ChessPosition source = UI.readChesPosition(sc);
@@ -34,6 +37,11 @@ public class XadrezJava {
                 ChessPosition target = UI.readChesPosition(sc);
 
                 ChessPiece capturedPiece = chessmath.performChessMove(source, target);
+                
+                if(captured != null){
+                    captured.add(capturedPiece);
+                }
+                
             }
             catch(ChessException e){
                 System.out.println(e.getMessage());

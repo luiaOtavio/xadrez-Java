@@ -6,6 +6,8 @@ import BordGame.Piece;
 import BordGame.Position;
 import ChessPiecePa.Hook;
 import Pieces.King;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,6 +16,10 @@ import Pieces.King;
 public class ChassMath {
     private int turn;
     private Color currentePlaye;
+    private List<Piece> pieceOnTheBoard = new ArrayList<>();
+    private List<Piece> capturedPieces = new ArrayList<>();
+    
+    
     private Board board;
     
     public ChassMath(){
@@ -58,6 +64,13 @@ public class ChassMath {
     private Piece makeMove(Position source, Position target){
         Piece p = board.removePiece(source);
         Piece capturedPiece = board.removePiece(target);
+        
+        if(capturedPiece != null){
+            pieceOnTheBoard.remove(capturedPiece);
+            capturedPieces.add(capturedPiece);
+        }
+                
+                
         board.placePiece(p, target);
         return capturedPiece;
     }
@@ -83,6 +96,7 @@ public class ChassMath {
     }
     private void placeNewPiece(char colomn, int row, ChessPiece piece){
         board.placePiece(piece, new ChessPosition(colomn, row).toPosition());
+        pieceOnTheBoard.add(piece);
     }
     private void initialSetup(){
         placeNewPiece('c', 1, new Hook(board, Color.WHITE));
